@@ -6,14 +6,13 @@ function App() {
    const dispatch = useAppDispatch();
    useEffect(() => {
       dispatch(fetchWeather());
-       console.log(dispatch(fetchWeather()));
    },[]);
    const {weather,isLoading,error} = useAppSelector(state => state.weatherSlice);
-
+   console.log(weather)
 
   return (
     <div className="App">
-      Hello
+
     </div>
   );
 }

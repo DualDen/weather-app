@@ -1,17 +1,20 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 import {AppDispatch} from "../store";
+import {weatherSlice} from "./WeatherSlice";
+import {IWeather} from "../../types/WeatherTypes";
 
-
-export const fetchWeather:any = createAsyncThunk('weather/fetchAll',
-       async (dispatch:AppDispatch,thunkAPI) => {
-        try {
-            const API_KEY:string = "aeb79e14bc365849f88229b05db14ed6";
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=56.5181621&lon=84.9323891&appid=${API_KEY}`);
-            return response.data;
-        }
-        catch (e) {
-            return thunkAPI.rejectWithValue("Error while getting request");
-        }
-    }
-)
+export const fetchWeather = () => (dispatch:AppDispatch) => {
+try{
+    dispatch(weatherSlice.actions.setWeatherPending);
+    const API_KEY:string = "aeb79e14bc365849f88229b05db14ed6";
+    navigator.geolocation.getCurrentPosition(async success => {
+        const {latitude,longitude} = success.coords;
+        const response = await axios.get<IWeather>(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`);
+        dispatch(weatherSlice.actions.setWeatherSuccess(response.data));
+    });
+}
+catch (e) {
+    weatherSlice.actions.setWeatherError("Error while loading data");
+}
+}
