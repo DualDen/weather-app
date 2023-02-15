@@ -33,3 +33,35 @@ export interface IWeatherWind {
     deg: number,
     gust: number,
 }
+export interface DateType {
+    hours: number
+    minutes: number
+    day: string
+    month: string
+    dayNumber: number
+}
+
+export enum Month {
+    Jan = 0,
+    Feb = 1,
+    Mar = 2,
+    Apr = 3,
+    May = 4,
+    Jun = 5,
+    Jul = 6,
+    Aug = 7,
+    Sep = 8,
+    Oct = 9,
+    Nov = 10,
+    Dec = 11
+}
+
+export enum Day {
+    Sunday = 0,
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6
+}

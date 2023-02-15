@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IWeather } from "../../../types/WeatherTypes";
+import {IWeather, DateType, Month, Day} from "../../../types/WeatherTypes";
 
 interface WeatherState {
   weather: IWeather;
   isWeatherLoading: boolean;
   weatherError: string | null;
-
+  date: DateType;
+  isDark: boolean;
 }
 
 const initialState: WeatherState = {
@@ -43,13 +44,21 @@ const initialState: WeatherState = {
   },
   isWeatherLoading: false,
   weatherError: "",
+  date: {
+    hours: 0,
+    minutes: 0,
+    day: "",
+    month: "",
+    dayNumber: 0,
+  },
+  isDark: false,
 };
 
 export const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    setWeatherPending: (state, action) => {
+    setWeatherPending: (state) => {
       state.isWeatherLoading = true;
     },
     setWeatherSuccess: (state, action: PayloadAction<IWeather>) => {
@@ -60,6 +69,17 @@ export const weatherSlice = createSlice({
     setWeatherError: (state, action: PayloadAction<string>) => {
       state.weatherError = action.payload;
       state.isWeatherLoading = false;
+    },
+    setTime: (state: WeatherState) => {
+      const date = new Date();
+      state.date.month = Month[date.getMonth()];
+      state.date.day = Day[date.getDay()];
+      state.date.hours = date.getHours();
+      if (date.getHours() >= 23 || date.getHours() < 9) {
+        state.isDark = true;
+      }
+      state.date.minutes = date.getMinutes();
+      state.date.dayNumber = date.getDate();
     },
   },
 });
