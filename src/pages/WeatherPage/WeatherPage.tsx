@@ -14,14 +14,14 @@ const WeatherPage: FC = () => {
     dispatch(setDate());
     dispatch(fetchWeather());
     dispatch(fetchApod(""));
-    const updateTime = setInterval(() => {
+    const updateDate = setInterval(() => {
       dispatch(setDate());
     }, 5000);
     return () => {
-      clearInterval(updateTime);
+      clearInterval(updateDate);
     };
   }, []);
-  const { weather, date, isWeatherLoading, isDark, weatherError } =
+  const { weather, date, isWeatherLoading, isDay, weatherError } =
     useAppSelector((state) => state.weatherSlice);
   const { apod, apodError, isApodLoading } = useAppSelector(
     (state) => state.nasaSlice
