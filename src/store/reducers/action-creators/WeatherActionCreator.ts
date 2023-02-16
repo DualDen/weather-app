@@ -5,7 +5,7 @@ import { IWeather } from "../../../types/WeatherTypes";
 
 export const fetchWeather = () => (dispatch: AppDispatch) => {
   try {
-    dispatch(weatherSlice.actions.setWeatherPending);
+    dispatch(weatherSlice.actions.setWeatherPending());
     const API_KEY: string = "aeb79e14bc365849f88229b05db14ed6";
     navigator.geolocation.getCurrentPosition(async (success) => {
       const { latitude, longitude } = success.coords;

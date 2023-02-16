@@ -1,0 +1,39 @@
+.weather-container {
+  width: 100%;
+  height: 30%;
+  background: #ddd;
+  padding: 20px 50px 0 50px;
+}
+.temperature{
+    margin-right: 10px;
+}
+.current-temperature {
+  font-size: 30px;
+  font-weight: 600;
+}
+.temperature-min-max {
+  font-size: 18px;
+  font-weight: 400;
+}
+.location {
+  display: flex;
+    align-items: center;
+  margin-bottom: 20px;
+  font-size: 27px;
+  font-weight: 700;
+}
+.weather-info{
+    display: flex;
+    align-items: center;
+}
+.weather-status{
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-right: 80px;
+    margin-left: 50px;
+}
+.weather-main{
+margin-right: 80px;
+}

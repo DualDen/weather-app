@@ -10,6 +10,7 @@ interface ApodState {
 
 const initialState: ApodState = {
   apod: {
+    copyright: "",
     explanation: "",
     date: "",
     hdurl: "",

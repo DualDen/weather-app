@@ -1,4 +1,5 @@
 export interface APOD {
+  copyright: string;
   explanation: string;
   date: string;
   hdurl: string;

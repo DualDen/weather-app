@@ -1,0 +1,10 @@
+.container {
+  margin: 0 auto;
+  max-width: 1140px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.weather-block {
+  height: 80%;
+}
