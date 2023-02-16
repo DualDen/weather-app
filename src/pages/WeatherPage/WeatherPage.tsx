@@ -6,6 +6,7 @@ import Weather from "../../components/Weather/Weather";
 import Apod from "../../components/Apod/Apod";
 import "./WeatherPage.css";
 import { weatherSlice } from "../../store/reducers/Slices/WeatherSlice";
+import Loader from "../../components/Loader/Loader";
 
 const WeatherPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +29,7 @@ const WeatherPage: FC = () => {
   );
   return (
     <>
+      <div className={isDay ? "day-picture" : "night-picture"}></div>
       <div className="container">
         {!isApodLoading && !isWeatherLoading ? (
           <div className="weather-block">
@@ -38,13 +40,14 @@ const WeatherPage: FC = () => {
               date={date}
             />
             <Weather
+              isDay={isDay}
               weather={weather}
               isLoading={isWeatherLoading}
               error={weatherError}
             />
           </div>
         ) : (
-          <h1>Loading</h1>
+          <Loader />
         )}
       </div>
     </>
