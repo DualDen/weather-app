@@ -22,31 +22,28 @@ const WeatherPage: FC = () => {
       clearInterval(updateDate);
     };
   }, []);
-  const { weather, date, isWeatherLoading, isDay, weatherError } =
+  const { weather, date, isWeatherLoading, isDay  } =
     useAppSelector((state) => state.weatherSlice);
-  const { apod, apodError, isApodLoading } = useAppSelector(
+  const { apod, isApodLoading } = useAppSelector(
     (state) => state.nasaSlice
   );
   const blockClass = () => {
-    return isDay ? "day-picture" : "night-picture"
-  }
+    return isDay ? "day-picture" : "night-picture";
+  };
   return (
     <>
-      <div className={blockClass()}/>
+      <div className={blockClass()} />
       <div className="container">
         {!isApodLoading && !isWeatherLoading ? (
           <div className="weather-block">
             <Apod
               apod={apod}
-              error={apodError}
               isLoading={isApodLoading}
               date={date}
             />
             <Weather
               isDay={isDay}
               weather={weather}
-              isLoading={isWeatherLoading}
-              error={weatherError}
             />
           </div>
         ) : (

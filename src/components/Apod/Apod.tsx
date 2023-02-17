@@ -5,12 +5,11 @@ import "./Apod.css";
 
 interface APODProps {
   apod: APOD;
-  error: string;
   isLoading: boolean;
   date: DateType;
 }
 
-const Apod: FC<APODProps> = ({ apod, error, isLoading, date }) => {
+const Apod: FC<APODProps> = ({ apod, date }) => {
   return (
     <div className="apod-container">
       <img className="apod-background-image" src={apod.hdurl} alt="" />

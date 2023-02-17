@@ -80,7 +80,7 @@ export const weatherSlice = createSlice({
           ? "0" + date.getHours()
           : date.getHours().toString();
       if (date.getHours() >= 18 || date.getHours() < 9) {
-        state.isDay = true;
+        state.isDay = false;
       }
       state.date.minutes =
         date.getMinutes() < 10

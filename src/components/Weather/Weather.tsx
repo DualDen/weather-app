@@ -1,18 +1,18 @@
 import React, { FC } from "react";
 import { IWeather } from "../../types/WeatherTypes";
 import "./Weather.css";
-import geoicon from "../../assets/geoicon.svg"
+import geoicon from "../../assets/geoicon.svg";
 
 interface WeatherProps {
   weather: IWeather;
-  isLoading: boolean;
-  error: string | null;
   isDay: boolean;
 }
 
-const Weather: FC<WeatherProps> = ({ weather,isDay }) => {
+const Weather: FC<WeatherProps> = ({ weather, isDay }) => {
   return (
-    <div className={isDay ? "weather-container day" : "weather-container night"}>
+    <div
+      className={isDay ? "weather-container day" : "weather-container night"}
+    >
       <div className="location">
         <img
           style={{ marginRight: 5 }}
