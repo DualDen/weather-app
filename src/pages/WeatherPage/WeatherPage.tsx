@@ -27,9 +27,12 @@ const WeatherPage: FC = () => {
   const { apod, apodError, isApodLoading } = useAppSelector(
     (state) => state.nasaSlice
   );
+  const blockClass = () => {
+    return isDay ? "day-picture" : "night-picture"
+  }
   return (
     <>
-      <div className={isDay ? "day-picture" : "night-picture"}></div>
+      <div className={blockClass()}/>
       <div className="container">
         {!isApodLoading && !isWeatherLoading ? (
           <div className="weather-block">

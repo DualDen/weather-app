@@ -11,7 +11,6 @@ interface WeatherProps {
 }
 
 const Weather: FC<WeatherProps> = ({ weather,isDay }) => {
-  console.log(weather);
   return (
     <div className={isDay ? "weather-container day" : "weather-container night"}>
       <div className="location">

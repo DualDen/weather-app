@@ -17,9 +17,6 @@
   left: 0;
   top: 0;
   z-index: -2;
-  background: #FFEFBA;
-  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
 
 }
 .night-picture{
