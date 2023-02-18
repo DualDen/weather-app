@@ -10,9 +10,10 @@ import { fetchWeatherByCity } from "../../store/reducers/action-creators/Weather
 interface WeatherProps {
   weather: IWeather;
   isDay: boolean;
+  error: string | null;
 }
 
-const Weather: FC<WeatherProps> = ({ weather, isDay }) => {
+const Weather: FC<WeatherProps> = ({ weather, isDay, error }) => {
   const dispatch = useAppDispatch();
   const [isShow, setIsShow] = useState(false);
   const [city, setCity] = useState("");
