@@ -5,7 +5,7 @@ import "./GalleryPage.css";
 import { Button, Card, Input } from "antd";
 import { fetchGallery } from "../../store/reducers/action-creators/GalleryActionCreator";
 import RandomPhotoCard from "../../components/RandomPhotoCard/RandomPhotoCard";
-import Gallery from "../../components/Gallery/Gallery";
+import Gallery from "../../components/Gallery/GalleryCards";
 
 const GalleryPage = () => {
   const [searchId, setSearchId] = useState(0);
@@ -17,8 +17,8 @@ const GalleryPage = () => {
   const { randomPhoto, isRandomLoading } = useAppSelector(
     (state) => state.randomPhotoSlice
   );
-  const { gallery, isLoading } = useAppSelector((state) => state.gallerySlice);
-
+  const { gallery, isLoading, error } = useAppSelector((state) => state.gallerySlice);
+  console.log(isLoading);
   return (
     <div>
       <div className="gallery-search">
@@ -39,7 +39,7 @@ const GalleryPage = () => {
           randomPhoto={randomPhoto}
         />
       ) : (
-        <Gallery />
+        <Gallery error={error} gallery={gallery} isLoading={isLoading}/>
       )}
     </div>
   );

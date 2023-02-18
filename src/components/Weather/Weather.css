@@ -28,6 +28,7 @@
   font-weight: 400;
 }
 .location {
+    cursor: pointer;
   display: flex;
     align-items: center;
   margin-bottom: 20px;

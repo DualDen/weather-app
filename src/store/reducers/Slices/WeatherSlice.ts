@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IWeather, DateType, Month, Day } from "../../../types/WeatherTypes";
+import {fetchWeatherByCity} from "../action-creators/WeatherByCityActionCreator";
 
 interface WeatherState {
   weather: IWeather;
@@ -90,6 +91,20 @@ export const weatherSlice = createSlice({
       state.date.year = date.getFullYear();
     },
   },
+  extraReducers: builder => {
+    builder.addCase(fetchWeatherByCity.pending, (state:WeatherState) => {
+      state.isWeatherLoading = true;
+    });
+    builder.addCase(fetchWeatherByCity.fulfilled,(state:WeatherState,action:PayloadAction<IWeather>) => {
+      state.weather = action.payload;
+      state.isWeatherLoading = false;
+      state.weatherError = "";
+    });
+    builder.addCase(fetchWeatherByCity.rejected,(state:WeatherState,action:PayloadAction<any>) => {
+      state.isWeatherLoading = false;
+      state.weatherError = action.payload;
+    })
+  }
 });
 
 export default weatherSlice.reducer;

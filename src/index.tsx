@@ -15,9 +15,7 @@ const store = setupStore();
 console.log(store);
 
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
         <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
 );

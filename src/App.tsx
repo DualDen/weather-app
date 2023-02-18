@@ -4,10 +4,7 @@ import Header from "./components/Header/Header";
 
 
 const App = () => {
-  const blockClass = () => {
-    return location.href.includes('gallery') ? "App-dark" : "App"
-  }
-  return <div className={blockClass()}>
+  return <div className="App">
     <Header/>
     <Outlet/>
   </div>;

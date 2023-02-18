@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, {FC, memo} from "react";
 import { Card } from "antd";
 import { RandomPhoto } from "../../types/RandomPhotoTypes";
 import "./RandomPhotoCard.css"
@@ -15,6 +15,8 @@ const RandomPhotoCard: FC<RandomPhotoCardProps> = ({randomPhoto,isRandomLoading}
         loading={isRandomLoading}
         size="small"
         title={randomPhoto.user.first_name + "" + randomPhoto.user.last_name}
+        hoverable={true}
+        type={"inner"}
       >
         <img
           style={{ maxHeight: 400, width: "100%" }}
@@ -27,4 +29,4 @@ const RandomPhotoCard: FC<RandomPhotoCardProps> = ({randomPhoto,isRandomLoading}
   );
 };
 
-export default RandomPhotoCard;
+export default memo(RandomPhotoCard);

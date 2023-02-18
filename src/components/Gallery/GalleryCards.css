@@ -1,0 +1,14 @@
+.gallery-container{
+    width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.gallery-container .gallery-card-container{
+    width: 18%;
+    margin-top: 60px;
+}
+.ant-card-body img{
+    min-height: 200px;
+}

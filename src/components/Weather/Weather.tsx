@@ -1,7 +1,11 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { IWeather } from "../../types/WeatherTypes";
 import "./Weather.css";
 import geoicon from "../../assets/geoicon.svg";
+import { Button, Input, Modal } from "antd";
+import { fetchGallery } from "../../store/reducers/action-creators/GalleryActionCreator";
+import { useAppDispatch } from "../../hooks/hooks";
+import { fetchWeatherByCity } from "../../store/reducers/action-creators/WeatherByCityActionCreator";
 
 interface WeatherProps {
   weather: IWeather;
@@ -9,11 +13,41 @@ interface WeatherProps {
 }
 
 const Weather: FC<WeatherProps> = ({ weather, isDay }) => {
+  const dispatch = useAppDispatch();
+  const [isShow, setIsShow] = useState(false);
+  const [city, setCity] = useState("");
   return (
     <div
       className={isDay ? "weather-container day" : "weather-container night"}
     >
-      <div className="location">
+      <Modal
+        open={isShow}
+        onCancel={() => {
+          setIsShow(false);
+        }}
+        centered={true}
+        closable={false}
+        okButtonProps={{ style: { display: "none" } }}
+        cancelButtonProps={{ style: { display: "none" } }}
+      >
+        <div style={{ marginBottom: 10 }}>Enter your City</div>
+        <Input.Search
+          onChange={(e) => {
+            setCity(e.target.value);
+          }}
+          onSearch={() => {
+            dispatch(fetchWeatherByCity(city));
+          }}
+          placeholder="Please enter your city"
+          enterButton={<Button>Get weather</Button>}
+        />
+      </Modal>
+      <div
+        onClick={() => {
+          setIsShow(true);
+        }}
+        className="location"
+      >
         <img
           style={{ marginRight: 5 }}
           width="30px"
