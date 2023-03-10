@@ -75,7 +75,7 @@ select {
 }
 @media screen and (max-width: 500px) {
 body .apod-container{
-  height: 1000px;
+  height: auto;
   }
 body .weather-status {
   margin-left: 0;
