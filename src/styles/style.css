@@ -75,12 +75,20 @@ select {
 }
 @media screen and (max-width: 500px) {
 body .apod-container{
-  height: 800px;
+  height: 1000px;
   }
 body .weather-status {
   margin-left: 0;
+  margin-right: 0;
   }
 body .weather-main{
     margin-right: 0;
   }
+  body .weather-info {
+  display: block;
+  }
+  body .weather-container {
+  height: 500px;
+  }
+  
 }
