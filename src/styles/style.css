@@ -73,3 +73,14 @@ select {
 .App {
   height: 100vh;
 }
+@media screen and (max-width: 500px) {
+body .apod-container{
+  height: 800px;
+  }
+body .weather-status {
+  margin-left: 0;
+  }
+body .weather-main{
+    margin-right: 0;
+  }
+}
