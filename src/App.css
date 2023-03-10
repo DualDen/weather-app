@@ -8,14 +8,13 @@ blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
 table{border-collapse:collapse;border-spacing:0}
 
 @media screen and (max-width: 500px) {
-.apod-container{
-  height: 500px;
+body .apod-container{
+  height: 800px;
   }
-  .weather-status {
+body .weather-status {
   margin-left: 0;
-    margin-right: 74px;
   }
-  .weather-main{
-    margin-left: 0;
+body .weather-main{
+    margin-right: 0;
   }
 }
